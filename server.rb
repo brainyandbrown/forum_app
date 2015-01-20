@@ -7,6 +7,10 @@ module ForumApp
     register Sinatra::Reloader
   end
 
+  configure :deployment do
+    register Sinatra::Reloader
+  end
+
   get'/' do
     query_string = URI.encode_www_form({
       :client_id     => "395320660636532",

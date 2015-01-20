@@ -36,12 +36,12 @@ module ForumApp
     render :erb, :topics
   end
 
-  get '/facebook/topics/new' do
+  get'/facebook/topics/new' do
     topic =
     render :erb, :new
   end
 
-  get('/facebook/logout') do
+  get'/facebook/logout' do
       session[:name] = session[:access_token] = nil # dual assignment!
       redirect to("/")
     end

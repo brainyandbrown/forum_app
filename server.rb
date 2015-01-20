@@ -19,7 +19,7 @@ module ForumApp
   end
 
   get'/facebook/topics' do
-    binding.pry
+    # binding.pry
     query_string = URI.encode_www_form({
       :client_id     => "395320660636532",
       :redirect_uri  => "http://localhost:9292/facebook/topics",
@@ -30,17 +30,18 @@ module ForumApp
       :headers => {
         "Accept" => "application/json"
       })
-    response_hash = Rack::Utils.parse_query(response)
-    binding.pry
-    render :erb, :topics
+     # binding.pry
 
+    response_hash = Rack::Utils.parse_query(response)
+    render :erb, :topics
   end
 
   get '/facebook/topics/new' do
+    topic =
     render :erb, :new
   end
 
-  get('/logout') do
+  get('/facebook/logout') do
       session[:name] = session[:access_token] = nil # dual assignment!
       redirect to("/")
     end

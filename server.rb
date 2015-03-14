@@ -5,10 +5,11 @@ module ForumApp
 
   configure :development do
     register Sinatra::Reloader
+    $redis = Redis.new
   end
 
   configure :deployment do
-    register Sinatra::Reloader
+    $redis = Redis.new({url: ENV['REDISTOGO_URL']})
   end
 
   get'/' do
